@@ -2,9 +2,14 @@ import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameScore from "./GameScore";
+import { Genre } from "../hooks/useGenres";
 
-const GameGrid = () => {
-  const { games, error, isLoading } = useGames();
+interface Props {
+  selectedGenre: Genre | null;
+}
+
+const GameGrid = ({ selectedGenre }: Props) => {
+  const { games, error, isLoading } = useGames(selectedGenre);
   return (
     <>
       {error && <Text>{error}</Text>}
@@ -20,7 +25,7 @@ const GameGrid = () => {
         columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
         spacing={10}
         justifyContent="space-between"
-        padding="10px"
+        padding="5px"
       >
         {games.map((game) => (
           <GameCard key={game.id} game={game} />
