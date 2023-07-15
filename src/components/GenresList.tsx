@@ -14,9 +14,10 @@ import {
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenresList = ({ onSelectGenre }: Props) => {
+const GenresList = ({ onSelectGenre, selectedGenre }: Props) => {
   const [isOpen, setOpen] = useState(true);
   const { genres, error, isLoading } = useGenres();
   return (
@@ -37,6 +38,9 @@ const GenresList = ({ onSelectGenre }: Props) => {
                   onSelectGenre(genre);
                   alert(genre.name);
                 }}
+                backgroundColor={
+                  selectedGenre?.id === genre.id ? "gray.100" : "none"
+                }
               >
                 <HStack>
                   <Image
