@@ -23,10 +23,12 @@ const PlatformSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
       {({ isOpen }) => (
         <>
           <MenuButton
+            marginBottom={10}
+            marginTop={10}
             isActive={isOpen}
             as={Button}
             minWidth="100px"
-            rightIcon={<BsChevronDown></BsChevronDown>}
+            rightIcon={<BsChevronDown />}
           >
             {(selectedPlatform && selectedPlatform.name) || "Platforms"}
           </MenuButton>

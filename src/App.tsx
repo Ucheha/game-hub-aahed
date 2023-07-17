@@ -24,6 +24,7 @@ function App() {
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
       }}
+      marginRight={1}
     >
       <GridItem area="nav">
         <NavBar />
@@ -36,7 +37,7 @@ function App() {
           />
         </GridItem>
       </Show>
-      <GridItem area="main">
+      <GridItem area="main" marginRight={2}>
         <PlatformSelector
           selectedPlatform={gameQuery.platform}
           onSelectPlatform={(platform) =>
