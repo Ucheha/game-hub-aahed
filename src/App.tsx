@@ -1,22 +1,25 @@
-import { Button, ButtonGroup, Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, Show } from "@chakra-ui/react";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenresList from "./components/GenresList";
 import { useState } from "react";
-import { Genre } from "./hooks/useGenres";
+import { Genre } from "./services/genres-client";
 import PlatformSelector from "./components/PlatformSelector";
-import { Platform } from "./hooks/useGames";
+import { Platform } from "./services/platforms-client";
 
 export interface GameQueryParam {
   genre: Genre | null;
   platform: Platform | null;
+  page: number;
+  page_size: number;
 }
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQueryParam>(
-    {} as GameQueryParam
-  );
+  const [gameQuery, setGameQuery] = useState<GameQueryParam>({
+    page: 1,
+    page_size: 10,
+  } as GameQueryParam);
 
   return (
     <Grid
