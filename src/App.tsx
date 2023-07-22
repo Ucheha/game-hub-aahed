@@ -9,7 +9,7 @@ import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./services/platforms-client";
 
 export interface GameQueryParam {
-  genre: Genre | null;
+  genre: number | null;
   platform: Platform | null;
   page: number;
   page_size: number;

@@ -3,8 +3,8 @@ import { Genre } from "../services/genres-client";
 import { HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
 
 interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  onSelectGenre: (genre: number) => void;
+  selectedGenre: number | null;
 }
 
 const GenresList = ({ onSelectGenre, selectedGenre }: Props) => {
@@ -17,9 +17,9 @@ const GenresList = ({ onSelectGenre, selectedGenre }: Props) => {
           padding={2}
           key={genre.id}
           onClick={() => {
-            onSelectGenre(genre);
+            onSelectGenre(genre.id);
           }}
-          backgroundColor={selectedGenre?.id === genre.id ? "gray" : "none"}
+          backgroundColor={selectedGenre === genre.id ? "gray" : "none"}
         >
           <HStack>
             <Image

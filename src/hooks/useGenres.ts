@@ -1,5 +1,6 @@
 //import useData from "./useData";
 
+import ms from "ms";
 import { FetchResponse } from "../services/api-client";
 import { CACHE_NAME_GENRES } from "../services/constants";
 import genresService, { Genre } from "../services/genres-client";
@@ -9,7 +10,7 @@ const useGenres = () => {
   const { data, error, isLoading } = useQuery<FetchResponse<Genre>, Error>({
     queryKey: CACHE_NAME_GENRES,
     queryFn: genresService.getAll,
-    staleTime: 24 * 60 * 60 * 1000, // 24 hours
+    staleTime: ms("24h"), // 24 hours
   });
 
   return { genres: data?.results, error, isLoading };
